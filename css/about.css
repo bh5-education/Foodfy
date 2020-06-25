@@ -1,0 +1,17 @@
+.container .about h1{
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    margin-bottom: 8px;
+}
+
+.container main h2 {
+    font-size: 20px;
+    line-height: 30px;
+    margin: 15px 0 5px;
+}
+
+.container main p {
+    font-size: 18px;
+    line-height: 28px;
+}
