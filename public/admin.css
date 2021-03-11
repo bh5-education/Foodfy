@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --primary: #6558c3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  min-height: 100%;
+}
+
+body,
+input,
+select,
+button {
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  background-color: #111;
+  padding: 16px;
+}
+
+header h1 {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 768px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container h3 {
+  margin: 16px 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.container ul#index {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.container ul#index li {
+  display: flex;
+  align-items: center;
+}
+
+.container ul#index .image {
+  margin-right: 16px;
+  overflow: hidden;
+  max-width: 150px;
+  border-radius: 8px;
+  width: 100%;
+  height: 80px;
+}
+
+.container ul#index li .content {
+  display: grid;
+  gap: 4px;
+}
+
+.container ul#index .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container ul#index li .content strong {
+  font-size: 18px;
+  color: #111;
+  font-weight: 400;
+}
+
+.container ul#index li .content p {
+  font-size: 14px;
+  color: #777;
+}
+
+.container ul#index li .content a {
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* === FORMS === */
+
+form {
+  margin: 24px 0;
+}
+
+button[type='submit'],
+.edit-button {
+  background-color: var(--primary);
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 4px;
+  color: white;
+  padding: 4px 8px;
+}
+
+#title {
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item input,
+.item textarea {
+  border: 1px solid #ddd;
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.item textarea {
+  resize: none;
+  height: 180px;
+}
+
+.item button.add-ingredient,
+.item button.add-step {
+  color: var(--primary);
+  font-weight: 700;
+  margin: 8px 0 24px;
+}
+
+#title button[form='form-recipe-delete'] {
+  background-color: #dc4747;
+}
+
+/* === Show page === */
+
+.container.show-recipe {
+  margin-bottom: 32px;
+}
+
+.container.show-recipe .recipe-image {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.container.show-recipe .recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container .recipe-header {
+  display: grid;
+  place-items: center;
+  margin: 16px 0;
+}
+
+.container.show-recipe .recipe-header p {
+  color: #777;
+}
+
+.container .sections div:first-child {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 16px 0;
+}
+
+.container.show-recipe ul.show {
+  display: grid;
+  gap: 8px;
+  color: #444;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.container.show-recipe .information div:last-child {
+  color: #444;
+  font-size: 18px;
+  font-weight: 400;
+}

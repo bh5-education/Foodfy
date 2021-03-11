@@ -1,4 +1,13 @@
-# FoodFy
+<h1 aling='center'>FoodFy</h1>
+
+## Descrição
+
+Este projeto é sobre um site focado em apresentar receitas de alguns pratos para seu leitores.
+
+## Dependencias e Libs :book:
+
+- [Express](https://expressjs.com)
+- [Nunjucks](https://mozilla.github.io/nunjucks/)
 
 ## Essa aplicação foi desenvolvida para a listagem de receitas de comidas
 

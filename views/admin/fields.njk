@@ -1,0 +1,115 @@
+<div class='item'>
+  <div class='item'>
+    <div>Imagem da receita</div>
+    <div>
+      <input
+        type='url'
+        name='image_url'
+        value='{{recipe.image_url}}'
+      />
+    </div>
+  </div>
+
+  <div class='item'>
+    <div>Título da receita</div>
+    <div>
+      <input
+        type='text'
+        name='title'
+        value='{{recipe.title}}'
+      />
+    </div>
+  </div>
+
+  <div class='item'>
+    <div>Autor da receita</div>
+    <div>
+      <input
+        type='text'
+        name='author'
+        value='{{recipe.author}}'
+      />
+    </div>
+  </div>
+
+  <div class='item'>
+    <div id='ingredients' class='sections'>
+      <div>Ingredientes</div>
+      {% if not recipe.ingredients %}
+        <div class='ingredient'>
+          <input
+            type='text'
+            name='ingredients[]'
+            placeholder='Ingrediente'
+            value=''
+          />
+        </div>
+      {% else %}
+        {% for ingredient in recipe.ingredients %}
+          <div class='ingredient'>
+            <input
+              type='text'
+              name='ingredients[]'
+              value='{{ingredient}}'
+              placeholder='Adicione um novo ingrediente'
+            />
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <button type='button' class='add-ingredient'>Adicionar novo Ingrediente</button>
+  </div>
+
+  <div class='item'>
+    <div id='preparations' class='sections'>
+      <div>Modo de preparo</div>
+      {% if not recipe.preparation %}
+        <div class='preparation'>
+          <input 
+            type='text'
+            name='preparation[]'
+            value=''
+            placeholder='Passo'
+          />
+        </div>
+      {% else %}
+        {% for preparation in recipe.preparation %}
+          <div class='preparation'>
+            <input type='text' name='preparation[]' value='{{preparation}}' placeholder='Passo' />
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <button type='button' class='add-step'>Adicionar novo passo</button>
+  </div>
+
+  <div class='sections'>
+    <div>Informações adicionais</div>
+    <textarea name='information'>{{recipe.information}}</textarea>
+  </div>
+</div>
+
+<script>
+  function addNewField(array, element) {
+    const fields = document.querySelector(array);
+    const fieldContainer = document.querySelectorAll(element);
+
+    // Realiza um clone do último ingredient adicionado
+    const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
+
+    // Não adiciona um novo input se o último tem um valor vazio
+    if(newField.children[0].value == '') return false;
+
+    // Deixa o valor do input vazio
+    newField.children[0].value = '';
+    fields.appendChild(newField);
+  }
+
+  document
+    .querySelector('.add-ingredient')
+    .addEventListener('click', () => addNewField('#ingredients', '.ingredient'));
+
+  document
+    .querySelector('.add-step')
+    .addEventListener('click', () => addNewField('#preparations', '.preparation'));
+</script>
