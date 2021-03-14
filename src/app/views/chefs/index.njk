@@ -1,0 +1,26 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+  <title>Mostrando chefs</title>
+  <link rel='stylesheet' href='/adminChefs.css'/>
+{% endblock %}
+
+{% block content %}
+  <div class='container'>
+    <h3>Gerenciar chefs</h3>
+
+    <ul id='show-chef'>
+      {% for chef in chefs %}
+        <li>
+          <div class='image'>
+            <img src='{{chef.avatar_url}}' alt='Image de {{chef.name}}'/>
+          </div>
+          <div class='content'>
+            <strong>{{chef.name}}</strong>
+            <a href='/admin/chefs/{{chef.id}}'>Visualizar</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

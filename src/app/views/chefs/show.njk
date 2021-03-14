@@ -1,0 +1,46 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+  <title>Chef: {{chef.name}}</title>
+  <link rel='stylesheet' href='/adminChefs.css'/>
+{% endblock %}
+
+{% block content %}
+
+<div class='container show-chef'>
+  <div id='title'>
+    <h3>Chef: {{chef.name}}</h3>
+
+    <a class='edit-button' href='/admin/chefs/{{chef.id}}/edit'>Editar chef</a>
+  </div>
+
+  <div id='chef-profile'>
+    <div class='image'>
+      <img src='{{chef.avatar_url}}' alt='Imagem de {{chef.name}}' />
+    </div>
+    <p id='name'>{{chef.name}}</p>
+    <p>
+      {% if not chef.total_recipes %}
+        Nenhuma receita cadastrada
+      {% else %}
+        {% if chef.total_recipes < 2 %}
+          {{ chef.total_recipes }} receita
+        {% else %}
+          {{ chef.total_recipes }} receitas
+        {% endif %}
+      {% endif %}
+    </p>
+  </div>
+
+  <div id='content'>
+    <h3>Receitas</h3>
+
+    <ul id='index'>
+      {% for recipe in recipes %}
+        {% include 'recipe.njk' %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

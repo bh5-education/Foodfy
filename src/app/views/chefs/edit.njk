@@ -1,0 +1,32 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+  <title>Editando chefs</title>
+  <link rel='stylesheet' href='/adminChefs.css'/>
+{% endblock %}
+
+{% block content %}
+
+  <div class='container'>
+    <div id='title'>
+      <h3>Editando chef</h3>
+      <div id='menu-buttons'>
+        {# Adicionando form no button posso adicionar um ID no form e colocar-lo em qualquer lugar #}
+        <button type='submit' form='form-chef-delete'>Deletar</button>
+        <button type='submit' form='form-chef-edit'>Salvar chef</button>
+      </div>
+    </div>
+
+    <main>
+      <form method='POST' action='/admin/chefs?_method=PUT' id='form-chef-edit'>
+        {% include 'chefs/fields.njk' %}
+        <input type='hidden' name='id' value='{{chef.id}}' />
+      </form>
+
+      <form method='POST' action='/admin/chefs?_method=DELETE' id='form-chef-delete'>
+        <input type='hidden' name='id' value='{{chef.id}}' />
+      </form>
+    </main>
+  </div>
+
+{% endblock %}
