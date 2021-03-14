@@ -1,14 +1,15 @@
 {
   "name": "foodfy-launchbase",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "src/server.js",
   "repository": "https://github.com/BrunoDevCode/foodfy-launchbase.git",
   "author": "Bruno Henrique Santos <brunohenriquesantos272@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "method-override": "^3.0.0",
-    "nunjucks": "^3.2.1"
+    "nunjucks": "^3.2.1",
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "browser-sync": "^2.26.14",
@@ -17,7 +18,7 @@
   },
   "scripts": {
     "start": "npm-run-all -p nodemon browser",
-    "nodemon": "nodemon server.js",
-    "browser": "browser-sync start --proxy http://localhost:3333 --files 'public,views'"
+    "nodemon": "nodemon src/server.js",
+    "browser": "browser-sync start --proxy http://localhost:3333 --files 'public,src/app/views'"
   }
 }
