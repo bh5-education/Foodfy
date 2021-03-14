@@ -1,0 +1,20 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+  <title>Criando receita</title>
+  <link rel='stylesheet' href='/adminRecipes.css' />
+{% endblock %}
+
+{% block content %}
+
+<div class='container'>
+  <div id='title'>
+    <h3>Criando receita</h3>
+    <button type='submit' form='form-recipe-create'>Salvar Receita</button>
+  </div>
+  <form action='/admin/recipes' method='POST' id='form-recipe-create'>
+    {% include 'recipes/fields.njk' %}
+  </form>
+</div>
+
+{% endblock %}

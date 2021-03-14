@@ -1,0 +1,52 @@
+{% extends 'layout.njk' %}
+
+{% block header %}
+  <title>Receita {{recipe.title}}</title>
+  <link rel='stylesheet' href='/adminRecipes.css' />
+{% endblock %}
+
+{% block content %}
+
+<div class='container show-recipe'>
+  <div id='title'>
+    <h3>Receita: {{recipe.title}}</h3>
+
+    <a class='edit-button' href='/admin/recipes/{{recipe.id}}/edit'>Editar receita</a>
+  </div>
+
+  <div class='recipe-image'>
+    <img src='{{recipe.image}}' alt='Imagem do {{recipe.title}}' />
+  </div>
+
+  <div class='recipe-content'>
+    <div class='recipe-header'>
+      <h2>{{recipe.title}}</h2>
+      <p>por {{recipe.author}}</p>
+    </div>
+
+    <div class='ingredients sections'>
+      <div>Ingredientes</div>
+      <ul class='show'>
+        {% for ingredient in recipe.ingredients %}
+          <li> - {{ingredient}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class='preparation sections'>
+      <div>Modo de preparo</div>
+      <ul class='show'>
+        {% for preparation in recipe.preparation %}
+          <li> - {{preparation}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class='information sections'>
+      <div>Informações Adicionais</div>
+      <div>{{recipe.information}}</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
