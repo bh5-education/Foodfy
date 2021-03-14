@@ -4,7 +4,10 @@ const { date } = require('../lib/utils');
 module.exports = {
   all(params, callback) {
     let query = `
-      SELECT * FROM recipes
+      SELECT recipes.* , chefs.name AS chef
+      FROM recipes
+      LEFT JOIN chefs ON (chefs.id = recipes.chef_id)
+      ORDER BY recipes.title ASC
     `;
 
     if (params) {
@@ -52,7 +55,14 @@ module.exports = {
   },
 
   show(id, callback) {
-    db.query(`SELECT * FROM recipes WHERE id = $1`, [id], (err, results) => {
+    const query = `
+      SELECT recipes.*, chefs.name AS chef
+      FROM recipes
+      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+      WHERE recipes.id = $1
+    `;
+
+    db.query(query, [id], (err, results) => {
       if (err) throw `Database error ${err}`;
 
       callback(results.rows[0]);
@@ -100,7 +110,9 @@ module.exports = {
 
   findBy(filter, callback) {
     let query = `
-      SELECT * FROM recipes
+      SELECT recipes.*, chefs.name AS chef
+      FROM recipes
+      LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
     `;
 
     if (filter) {
@@ -109,7 +121,9 @@ module.exports = {
       `;
     }
 
-    query = `${query} ORDER BY title ASC`;
+    query = `${query} 
+      ORDER BY title ASC
+    `;
 
     db.query(query, (err, results) => {
       if (err) throw `Database error ${err}`;
