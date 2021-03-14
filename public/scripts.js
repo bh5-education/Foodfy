@@ -1,9 +1,11 @@
-const cards = document.querySelectorAll('.card');
+const currentpage = location.pathname;
+const menuItems = document.querySelectorAll('header #links a');
 
-for (let i = 0; i < cards.length; i++) {
-  cards[i].addEventListener('click', () => {
-    const id = i;
+for (let item of menuItems) {
+  if (currentpage.includes(item.getAttribute('href')))
+    item.classList.add('active');
 
-    window.location.href = `/recipes/${id}`;
-  });
+  if (currentpage.includes('/chefs')) {
+    document.querySelector('#filter-form').style.display = 'none';
+  }
 }
