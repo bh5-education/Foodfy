@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta chartset='utf-8' />
+    <meta name='viewport' description='width=device-width, initial-scale=1'/>
+    <link rel='stylesheet' href='/global.css'/>
+    <link rel='stylesheet' href='/admin.css'/>
+
+    {% block header %}
+      <title>Admin Foodfy</title>
+    {% endblock  %}
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>
+          <img src='/adminLogo.png' alt='Logo Foodfy' />
+        </h1>
+
+        <div id='links'>
+          <a href='/admin/recipes'>Receitas</a>
+          <a href='/admin/chefs'>Chefs</a>
+        </div>
+      <section>
+    </header>
+
+    {% block content %}{% endblock %}
+  </body>
+  <script src='/scripts.js'></script>
+</html>
