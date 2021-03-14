@@ -1,0 +1,38 @@
+{% extends 'site/layout.njk' %}
+
+{% block head %}
+  <title>Receitas - FoodFy</title>
+  <link rel='stylesheet' href='/recipes.css' />
+{% endblock %}
+
+{% block content %}
+  <div class='container'>
+    {% if filter %}
+      <div>
+        <h3>Buscando por: "{{filter}}"</h3>
+      </div>
+    {% endif %}
+
+    <div class="cards">
+
+    {% for recipe in recipes %}
+
+      <div class="card">
+        <div class="card-img">
+            <img src="{{recipe.image}}" alt="{{recipe.title}}">
+        </div>
+        <div>
+            <p class="card-name">{{recipe.title}}</p>
+        </div>
+        <div>
+            <p class="card-autor">{{recipe.author}}</p>
+        </div>
+      </div>
+
+    {% endfor %}
+
+  </div>
+  </div>
+  <script src="/recipes.js"></script>
+
+{% endblock %}

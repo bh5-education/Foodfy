@@ -1,0 +1,34 @@
+{% extends 'site/layout.njk' %}
+
+{% block head %}
+  <title>Foodfy - Chefs</title>
+  <link rel='stylesheet' href='/adminChefs.css' />
+{% endblock %}
+
+{% block content %}
+  <div class='container chefs'>
+    <ul id='show-chef'>
+      {% for chef in chefs %}
+        <li>
+          <div class='image'>
+            <img src='{{chef.avatar_url}}' alt='Image de {{chef.name}}'/>
+          </div>
+          <div class='content'>
+            <strong>{{chef.name}}</strong>
+            <p id='total_recipes'>
+              {% if not chef.total_recipes %}
+                Nenhuma receita cadastrada
+              {% else %}
+                {% if chef.total_recipes < 2 %}
+                  {{ chef.total_recipes }} receita
+                {% else %}
+                  {{ chef.total_recipes }} receitas
+                {% endif %}
+              {% endif %}
+            </p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
