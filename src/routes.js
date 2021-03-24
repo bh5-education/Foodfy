@@ -1,4 +1,5 @@
 const routes = require('express').Router();
+const multer = require('./app/middleware/multer');
 
 const site = require('./app/controllers/site');
 const chefs = require('./app/controllers/chefs');
@@ -39,8 +40,8 @@ routes.get('/admin/chefs/create', chefs.create);
 routes.get('/admin/chefs/:id', chefs.show);
 routes.get('/admin/chefs/:id/edit', chefs.edit);
 
-routes.post('/admin/chefs', chefs.post);
-routes.put('/admin/chefs', chefs.put);
+routes.post('/admin/chefs', multer.single('avatar'), chefs.post);
+routes.put('/admin/chefs', multer.single('avatar'), chefs.put);
 routes.delete('/admin/chefs', chefs.delete);
 
 module.exports = routes;

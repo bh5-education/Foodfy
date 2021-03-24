@@ -15,11 +15,26 @@
   <div class='item'>
     <div>Avatar</div>
     <div>
+      {% if avatar %}
+        <input
+          type='text'
+          name='avatar_url'
+          placeholder='https://source.unsplash.com/xXofYCc3hqc/500x500'
+          value='{{avatar.src}}'
+        />
+
+        <input type="hidden" name='avatar_id' value={{avatar.id}} />
+        <input type="hidden" name='avatar_name' value={{avatar.name}} />
+      {% endif %}
+    </div>
+    <div id='photos-upload'>
       <input
-        type='url'
-        name='avatar_url'
-        value='{{chef.avatar_url}}'
+        id='photos-input'
+        type='file'
+        name='avatar'
+        accept='image/*'
       />
+      <p class='button'>Enviar Avatar</p>
     </div>
   </div>
 

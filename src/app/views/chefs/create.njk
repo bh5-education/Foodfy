@@ -12,7 +12,7 @@
     <h3>Criando chef</h3>
     <button type='submit' form='form-chef-create'>Salvar chef</button>
   </div>
-  <form action='/admin/chefs' method='POST' id='form-chef-create'>
+  <form action='/admin/chefs' method='POST' id='form-chef-create' enctype='multipart/form-data'>
     {% include 'chefs/fields.njk' %}
   </form>
 </div>
