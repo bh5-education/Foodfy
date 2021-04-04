@@ -5,10 +5,10 @@ header {
 
 header section {
   width: 100%;
-  max-width: 768px;
+  max-width: 940px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 150px 1fr;
   align-items: center;
 }
 
@@ -26,7 +26,7 @@ header section #links a.active {
 }
 
 .container {
-  max-width: 768px;
+  max-width: 940px;
   width: 100%;
   margin: 0 auto;
 }

@@ -14,14 +14,60 @@
     <a class='edit-button' href='/admin/recipes/{{recipe.id}}/edit'>Editar receita</a>
   </div>
 
-  <div class='recipe-image'>
-    <img src='{{recipe.image}}' alt='Imagem do {{recipe.title}}' />
+  {# <div class='recipe-image'>
+    {% for image in photos %}
+      <img src='{{image.src}}' alt='Imagem de {{recipe.title}}' />
+    {% endfor %}
+  </div> #}
+
+  <div class="gallery">
+    <div class="highlight">
+      {% if not photos[0] %}
+        <img
+          src="http://placehold.it/500x500?text=PRODUTO SEM FOTO"
+          alt='Produto sem foto'
+        />
+      {% else %}
+        <img
+          src="{{photos[0].src}}"
+          alt="{{photos[0].name}}"
+          onclick='Lightbox.open()'
+        />
+      {% endif %}
+
+      <div class="lightbox-target">
+        <img
+          src="{{photos[0].src}}"
+          alt="{{photos[0].name}}"
+        />
+        <a
+          href="#"
+          class='lightbox-close'
+          onclick='Lightbox.close()'
+        >
+          <i class="material-icons">close</i>
+        </a>
+      </div>
+    </div>
+
+    <div class="gallery-preview">
+      {% for photo in photos %}
+        <img
+          src="{{photo.src}}"
+          alt="{{photo.name}}"
+          {% if loop.index0 == 0 %}
+            class='active'
+          {% endif %}
+          onclick='ImageGallery.setImage(event)'
+        />
+      {% endfor %}
+    </div>
   </div>
 
   <div class='recipe-content'>
     <div class='recipe-header'>
       <h2>{{recipe.title}}</h2>
-      <p>por {{recipe.author}}</p>
+      <p>por {{recipe.chef}}</p>
     </div>
 
     <div class='ingredients sections'>

@@ -23,22 +23,20 @@ module.exports = {
     });
   },
 
-  create(data, callback) {
+  create(data) {
     const query = `
       INSERT INTO recipes (
-        image,
         title,
         chef_id,
         ingredients,
         preparation,
         information,
         created_at
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+      ) VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id
     `;
 
     const values = [
-      data.image,
       data.title,
       data.chef_id,
       data.ingredients,
@@ -47,14 +45,10 @@ module.exports = {
       date(Date.now()).iso,
     ];
 
-    db.query(query, values, (err, results) => {
-      if (err) throw `Database error ${err}`;
-
-      callback(results.rows[0]);
-    });
+    return db.query(query, values);
   },
 
-  show(id, callback) {
+  async show(id) {
     const query = `
       SELECT recipes.*, chefs.name AS chef
       FROM recipes
@@ -62,42 +56,30 @@ module.exports = {
       WHERE recipes.id = $1
     `;
 
-    db.query(query, [id], (err, results) => {
-      if (err) throw `Database error ${err}`;
-
-      callback(results.rows[0]);
-    });
+    return db.query(query, [id]);
   },
 
-  update(params) {
-    const { callback } = params;
-
+  async update(data) {
     const query = `
       UPDATE recipes SET 
-        image=($1),
-        title=($2),
-        chef_id=($3),
-        ingredients=($4),
-        preparation=($5),
-        information=($6)
-      WHERE id = $7
+        title=($1),
+        chef_id=($2),
+        ingredients=($3),
+        preparation=($4),
+        information=($5)
+      WHERE id = $6
     `;
 
     const values = [
-      params.image,
-      params.title,
-      params.chef_id,
-      params.ingredients,
-      params.preparation,
-      params.information,
-      params.id,
+      data.title,
+      data.chef_id,
+      data.ingredients,
+      data.preparation,
+      data.information,
+      data.id,
     ];
 
-    db.query(query, values, (err, results) => {
-      if (err) throw `Database error ${err}`;
-
-      callback();
-    });
+    return db.query(query, values);
   },
 
   delete(id, callback) {
@@ -141,10 +123,6 @@ module.exports = {
   },
 
   chefOptions(callback) {
-    db.query('SELECT name, id FROM chefs', (err, results) => {
-      if (err) throw `Database error ${err}`;
-
-      callback(results.rows);
-    });
+    return db.query('SELECT name, id FROM chefs');
   },
 };

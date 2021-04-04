@@ -12,7 +12,7 @@
     <h3>Criando receita</h3>
     <button type='submit' form='form-recipe-create'>Salvar Receita</button>
   </div>
-  <form action='/admin/recipes' method='POST' id='form-recipe-create'>
+  <form action='/admin/recipes' method='POST' id='form-recipe-create' enctype='multipart/form-data'>
     {% include 'recipes/fields.njk' %}
   </form>
 </div>

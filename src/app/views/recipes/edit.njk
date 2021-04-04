@@ -18,7 +18,7 @@
     </div>
 
     <main>
-      <form method='POST' action='/admin/recipes?_method=PUT' id='form-recipe-edit'>
+      <form method='POST' action='/admin/recipes?_method=PUT' id='form-recipe-edit' enctype='multipart/form-data'>
         <input type='hidden' name='id' value='{{recipe.id}}' />
         {% include 'recipes/fields.njk' %}
       </form>
